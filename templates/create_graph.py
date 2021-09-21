@@ -8,6 +8,8 @@ import requests
 key = open('API_KEY.txt').read()
 stock_code = 'TSLA'
 
+
+
 def read_stock(key,stock_code):
     ts = TimeSeries(key, output_format='pandas')
     #data, meta = ts.get_intraday(stock_code, interval = '1min', outputsize = 'full')
