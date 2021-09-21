@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect
-from bokeh.plotting import figure, show
+from bokeh.plotting import figure, show,curdoc
+from bokeh.layouts import column
 from alpha_vantage.timeseries import TimeSeries
 import bokeh
 import pandas as pd
@@ -12,7 +13,7 @@ key = open('API_KEY.txt').read()
 stock_code = 'TSLA'
 
 #print(np.__version__)
-print(bokeh.__version__)
+#print(bokeh.__version__)
 
 def read_stock(key,stock_code):
     ts = TimeSeries(key, output_format='pandas')
@@ -61,7 +62,8 @@ def create_graph():
         p.line(x, y, line_width=2)
 
         # show the results
-        show(p)
+        #show(p)
+        curdoc().add_root(column(p))
         return render_template('index.html')
 
 if __name__ == '__main__':
