@@ -10,7 +10,7 @@ app = Flask(__name__)
 key = open('API_KEY.txt').read()
 stock_code = 'TSLA'
 
-print(np.__version__)
+#print(np.__version__)
 
 def read_stock(key,stock_code):
     ts = TimeSeries(key, output_format='pandas')
