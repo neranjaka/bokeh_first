@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, redirect
 from bokeh.plotting import figure, show,curdoc
 from bokeh.layouts import column
+from bokeh.resources import CDN
+from bokeh.embed import file_html
 from alpha_vantage.timeseries import TimeSeries
 import bokeh
 import pandas as pd
@@ -62,8 +64,9 @@ def create_graph():
         p.line(x, y, line_width=2)
 
         # show the results
-        #show(p)
-        curdoc().add_root(column(p))
+        show(p)
+        #curdoc().add_root(column(p))
+        #html = file_html(p,CDN,"my_plot")
         return render_template('index.html')
 
 if __name__ == '__main__':
