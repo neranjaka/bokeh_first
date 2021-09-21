@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect
 from bokeh.plotting import figure, show
 from alpha_vantage.timeseries import TimeSeries
+import bokeh
 import pandas as pd
 import numpy as np
 import requests
@@ -11,6 +12,7 @@ key = open('API_KEY.txt').read()
 stock_code = 'TSLA'
 
 #print(np.__version__)
+print(bokeh.__version__)
 
 def read_stock(key,stock_code):
     ts = TimeSeries(key, output_format='pandas')
